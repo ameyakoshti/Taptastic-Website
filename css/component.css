@@ -13,7 +13,7 @@ body {
 }
 
 body {
-	background: #52be7f;
+	background: #3498db;
 	color: #fff;
 }
 
@@ -53,7 +53,7 @@ body {
 	border-radius: 50%;
 	background: none;
 	background-color: #fff;
-	color: #52be7f;
+	color: #1d6fa5;
 	text-align: center;
 	font-weight: 700;
 	font-size: 1.5em;
@@ -146,10 +146,10 @@ body {
 	width: 14.5em;
 	height: 14.5em;
 	border-radius: 50%;
-	background: #429a67;
-	background: -webkit-radial-gradient(transparent 35%, #429a67 35%);
-	background: -moz-radial-gradient(transparent 35%, #429a67 35%);
-	background: radial-gradient(transparent 35%, #429a67 35%);
+	background: #1d6fa5;
+	background: -webkit-radial-gradient(transparent 35%, #1d6fa5 35%);
+	background: -moz-radial-gradient(transparent 35%, #1d6fa5 35%);
+	background: radial-gradient(transparent 35%, #1d6fa5 35%);
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
@@ -176,9 +176,9 @@ body {
 .csstransforms .cn-wrapper li a:hover,
 .csstransforms .cn-wrapper li a:active,
 .csstransforms .cn-wrapper li a:focus {
-	background: -webkit-radial-gradient(transparent 35%, #449e6a 35%);
-	background: -moz-radial-gradient(transparent 35%, #449e6a 35%);
-	background: radial-gradient(transparent 35%, #449e6a 35%);
+	background: -webkit-radial-gradient(transparent 35%, #124364 35%);
+	background: -moz-radial-gradient(transparent 35%, #124364 35%);
+	background: radial-gradient(transparent 35%, #124364 35%);
 }
 
 .csstransforms .opened-nav li {

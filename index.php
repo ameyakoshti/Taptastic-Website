@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+
+<?php
+    if ( isset( $_SESSION['YOUR_SID'] ) ) {
+    	session_start();
+    	//$_currentSessionId = $_SESSION['YOUR_SID'];
+	}
+?>
+				
 <html lang="en" class="no-js">
 	
 	<head>
@@ -8,78 +16,34 @@
 		
 		<title>Taptastic</title>
 		
-		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.png">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/piemenu.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 		<link rel="stylesheet" type="text/css" href="css/modal.css" />
-		<link rel="stylesheet" type="text/css" href="css/slide.css"/>		
+		<link rel="stylesheet" type="text/css" href="css/slide.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css"/>
 		
 		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>	  	
 		<script type="text/javascript" src="js/slide.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#logout').click(function(){ logout(); return false; });	
-				
-				// Popover
-				$("[rel='popover']").popover({
-					html: 'true', 
-					content : '<div id="popOverBox">Your Text Here</div>'
-				});
-				
-				// Popovers - Click elsewhere to close
-				// @import url('reset.css');
-				$('#popoverId').popover({
-					html: true,
-					title: 'Popover Title',
-						content: '<div class="msg">Your Text Here</div>',
-					});
-					$('#popoverId').click(function (e) {
-						e.stopPropagation();
-					});
-					$(document).click(function (e) {
-						if (($('.popover').has(e.target).length == 0) || $(e.target).is('.close')) {
-					$('#popoverId').popover('hide');
-					}
-				});
-				
-				$('#pieMenuItem1').click(function () {
-					$("#classInfo").modal('show');
-				});
-				
-				
-			});
-						
-			function login(){
-				<?php session_start(); ?>
-				<?php 
-					try {
-						$username = $_POST['log'];
-						$password = $_POST['pwd'];
-						
-						if($username === "professor" && $password === "588"){
-							$_SESSION["username"] = $username;
-						}		
-					
-						$success = TRUE;	
-					} catch(Exception $e) {
-						error_log($e);
-						$success = FALSE;
-					}
-				
-				?>
-			}
-			function logout(){
-				<?php session_destroy();?>
-			}
-			
-		</script>
+		
+		<script type="text/javascript" src="js/graphs/jquery.jqplot.min.js"></script>
+		<script type="text/javascript" src="js/graphs/jqplot.cursor.min.js"></script>
+		<script type="text/javascript" src="js/graphs/jqplot.highlighter.min.js"></script>
+		<script type="text/javascript" src="js/graphs/jqplot.pointLabels.min.js"></script>
+		<script type="text/javascript" src="js/graphs/jqplot.barRenderer.min.js"></script>
+		<script type="text/javascript" src="js/graphs/jqplot.canvasAxisTickRenderer.min.js"></script>
+		<script type="text/javascript" src="js/graphs/jqplot.dateAxisRenderer.min.js"></script>
+		<script type="text/javascript" src="js/graphs/jqplot.canvasTextRenderer.min.js"></script>
+		<script type="text/javascript" src="js/graphs/jqplot.canvasAxisLabelRenderer.min.js"></script>
+		
+		<?php include $_SERVER['DOCUMENT_ROOT'].'/Taptastic-Website/includes/piemenu.php'; ?>
 	</head>
 	
 	<body>
+		
 		<div class="container">
 			<!-- Top Navigation -->
 			<div class="codrops-top clearfix">
@@ -127,10 +91,14 @@
 						<ul class="login">
 							<li class="left">&nbsp;</li>
 							<li id="toggle">
-								<a id="open" class="open" href="#"><?php if($_SESSION["username"]!=''){echo $_SESSION["username"];} else {echo "Log In";} ?></a>
+								<a id="open" class="open" href="#"><?php
+								if ($_SESSION["username"] != '') {echo $_SESSION["username"];
+								} else {echo "Log In";
+								}
+ 								?></a>
 								<a id="close" style="display: none;" class="close" href="#">Close</a>			
 							</li>
-							<?php if($_SESSION["username"]!=''){?><li class="sep">|</li><li><a href="#" class="logout" id="logout">Logout</a></li><?php }?>
+							<?php if($_SESSION["username"]!=''){?><li class="sep">|</li><li><a href="#" class="logout" id="logout">Logout</a></li><?php } ?>
 							<li class="right">&nbsp;</li>
 						</ul> 
 					</div> <!-- / top -->
@@ -156,12 +124,13 @@
 						<li><a href="#" id="pieMenuItem7"><span>About</span></a></li>
 					 </ul>
 				</div>
-				<?php }?>
+				<?php } ?>
 				<!-- End of Nav Structure -->
 			</div>
 			<?php if($_SESSION["username"]==''){?>
 				<h4 align="center"><i>Log into the website to see all the statistics</i></h4><?php
-			}?>
+				}
+			?>
 				
 		</div>
 			</br>
@@ -170,11 +139,8 @@
 				<p>This is just some information about the application. When the professor logs in from here he can see all the statistic about the class like how many students were present during a particular lecture, how many student were present overall in Fall2013 etc. The professor can set custom messages from here and when the student
 					tap on the NFC tags, they will get a notification of the message on their android phones</p>
 			</section>
+		</div>
 			
-			<!--<a title="" rel='popover' data-placement='bottom'>Default Popover</a>
-			<button id="popoverId" class="popoverThis btn btn-large btn-danger">Click Me!</button>-->
-		</div><!-- /container -->
-		
 		<script src="js/polyfills.js"></script>
 		<script src="js/piemenu.js"></script>
 		
@@ -182,16 +148,13 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title">Something something</h4>
+						<h4 id="title" class="modal-title">Something something</h4>
 					</div>
 					<div class="modal-body">
-						<div id="state-title" style="text-align: center;">
+						<div id="description" style="text-align: center;">
 							<h5>Akanksha is the man!</h5>
 						</div>
-						<div id="state-description" style="margin: 30px; text-align: center;">
-
-						</div>
-						<div id="state-trailer"  style="text-align: center; margin: 30px 0px 10px 0px;">
+						<div id="trailer"  style="text-align: center; margin: 30px 0px 10px 0px;">
 							<a href="#"> Click here (doesnt work)</a>
 						</div>
 					</div>
