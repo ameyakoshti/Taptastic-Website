@@ -133,11 +133,10 @@
 			?>
 				
 		</div>
-			</br>
 			<section>
-				
-				<p>This is just some information about the application. When the professor logs in from here he can see all the statistic about the class like how many students were present during a particular lecture, how many student were present overall in Fall2013 etc. The professor can set custom messages from here and when the student
-					tap on the NFC tags, they will get a notification of the message on their android phones</p>
+				<p style="font-size:12px;position:fixed;bottom:0;">
+					The University of Southern California does not screen or control the content on this website and thus does not guarantee the accuracy, integrity, or quality of such content. All content on this website is provided by and is the sole responsibility of the person from which such content originated, and such content does not necessarily reflect the opinions of the University administration or the Board of Trustees
+				</p>
 			</section>
 		</div>
 			
@@ -148,14 +147,14 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 id="title" class="modal-title">Something something</h4>
+						<h4 id="title" class="modal-title">Something Went Wrong</h4>
 					</div>
 					<div class="modal-body">
 						<div id="description" style="text-align: center;">
-							<h5>Akanksha is the man!</h5>
+							<h5>Snap! you shouldn't be seeing this.</h5>
 						</div>
-						<div id="trailer"  style="text-align: center; margin: 30px 0px 10px 0px;">
-							<a href="#"> Click here (doesnt work)</a>
+						<div id="trailer" style="text-align: center; margin: 30px 0px 10px 0px;">
+							<p> Quickly close this! </br> We are working on it...</p>
 						</div>
 					</div>
 				</div>
